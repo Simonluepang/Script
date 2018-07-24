@@ -8,10 +8,9 @@ Description: 合同管理页面
 '''
 from time import sleep
 import unittest, random, sys, autoit, threading, os
-sys.path.append('page_obj')
-sys.path.append('page_obj/models')
+from	 page_obj.models import Base
 from page_obj.models import myunit
-from page_obj.PageFunctionXML import FunctionFactory
+from page_obj.models import PageFunction_XML
 
 def addfile():
 	'''上传附件流程'''
@@ -22,7 +21,7 @@ def addfile():
 		autoit.mouse_click(x=780, y=50)
 		path = os.path.dirname(__file__)
 		npos = 'IMTestScript'
-		APPLICATION_PATH = myunit.common_path(path=path, npos=npos) + r'IMTestScript\IM_Test\data\uploadfile'
+		APPLICATION_PATH = Base.common_path(path=path, npos=npos) + r'IMTestScript\IM_Test\data\uploadfile'
 		autoit.send(APPLICATION_PATH)
 		autoit.send('{ENTER}')
 		autoit.mouse_click(x=780, y=970)
@@ -36,9 +35,9 @@ class NormalFlowTest(myunit.IMTest):
 	'''正常流程相关测试'''
 	def test1_creatnormal_flow(self):
 		'''添加合同正常流程'''
-		FF  = FunctionFactory(self.driver,'page_obj/Element.xml')
+		FF  = PageFunction_XML.FunctionFactory(self.driver,'IM_Test/test_case/page_obj/Element.xml')
 		
-		click_list = ['Maximize_Window', 'ProjectManage', 'ContractManage','switch_ContractType', 'ConstructionContract', 'create_ConstructModal', 'save_Contract']
+		click_list = ['Maximize_Window', 'ProjectManage', 'ContractManage','switch_ContractType', 'ConstructionContract', 'create_ConstructModal']
 		send_key_list = [('ContractNum', '1111'), ('ContractAmount', '2222'), ('ProvisionalSum', '3333'), ('ConstructionUnit', '测试建设单位'), ('ExecutionUnit', '测试施工单位'), 
 		('ConstructionManager', '测试施工负责人'), ('StartStakeMark', '4444'), ('SectionLength', '5555'), ('Duration', '6666'), ('SectionNum', '7777'), ('ProjectName', '测试项目名称'),
 		('SupervisionUnit', '测试监理单位'), ('EndStakeMark', '8888'),]
@@ -47,6 +46,8 @@ class NormalFlowTest(myunit.IMTest):
 
 		for Function_Name in click_list:
 			FF.RunClick(Function_Name)
+			sleep(0.5)
+		addfile()
 		for Function_Name, message in send_key_list:
 			FF.RunSendKeys(Function_Name, message)
 			sleep(0.5)
@@ -58,6 +59,32 @@ class NormalFlowTest(myunit.IMTest):
 		sleep(7)
 		self.assertEqual(FF.RunHint('ContractName_hint'), '7777')
 
+	def test2_deletenormal_flow(self):
+		'''删除合同正常流程'''
+		FF = PageFunction_XML.FunctionFactory(self.driver, 'IM_Test/test_case/page_obj/Element.xml')
+
+		click_list = ['Maximize_Window', 'delete_Contract', 'Enter_DeleteContract']
+		for Function_Name in click_list:
+			FF.RunClick(Function_Name)
+			sleep(0.5)
+		sleep(3)
+		self.assertEqual(FF.RunHint('ContractName_hint'), '合同段')
 
 if __name__ == '__main__':
+	
 	myunit.unittest.main()
+	'''
+	# 构造测试集
+	suite = unittest.TestSuite()
+	suite.addTest(NormalFlowTest("test1_creatnormal_flow"))
+	
+	# suite.addTest(NormalFlowTest("test2_editcontract_flow"))
+	# suite.addTest(NormalFlowTest("test3_deletenormal_flow"))
+	suite.addTest(CatalogTest(""))
+	suite.addTest(CatalogTest(""))
+	suite.addTest(CatalogTest(""))
+	
+	# 执行测试
+	runner = unittest.TextTestRunner()
+	runner.run(suite)
+	'''

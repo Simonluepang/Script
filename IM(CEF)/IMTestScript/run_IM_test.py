@@ -12,7 +12,7 @@ from email.mime.multipart import MIMEMultipart
 from email.header import Header
 from selenium import webdriver
 import smtplib, unittest, time, os, sys
-sys.path.append(r'IM_Test\test_case\page_obj\models')
+#sys.path.append(r'IM_Test\test_case\page_obj\models')
 
 
 def common_path(path, npos):
@@ -67,7 +67,7 @@ def new_report(testreport):
 	lists = os.listdir(testreport)
 	lists.sort(key=lambda fn: os.path.getmtime(testreport + "\\" + fn))
 	file_new = os.path.join(testreport, lists[-1])
-	print(file_new)
+	# print(file_new)
 	return file_new
 
 
@@ -90,4 +90,4 @@ if __name__ == '__main__':
 	
 	file_path = new_report('./IM_Test/report')
 
-	send_mail(file_path)
+	#send_mail(file_path)

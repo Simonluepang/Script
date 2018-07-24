@@ -11,11 +11,8 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from time import sleep
 import xml.dom.minidom as xmlParser
-import Base as Base
-'''
-#单独运行本文件的时候使用以下路径
-import models.Base as Base
-''' 
+# from Base import *
+from	 page_obj.models import Base
 
 class ElementClass:
 	'''获取配置文件中的信息'''
@@ -72,10 +69,9 @@ class MakeFunction(Base.Page):
 			self.find_element(By.XPATH, element_location).send_keys(message)
 		return ftw
 
-
 	def make_function_hint(self, element_location):
 		def fh():
-			return self.find_element(By.XPATH, element_location).text
+			return self.find_element(By.XPATH, element_location).text 
 		return fh
 
 class FunctionFactory():
@@ -84,6 +80,7 @@ class FunctionFactory():
 
 		self.FuncMap = {}
 		self.driver =  driver
+
 		self.InitClickByXpath(xmlpath,"FUNCTION_CLICK_BY_XPATH")
 		self.InitClickByClassName(xmlpath, "FUNCTION_CLICK_BY_CLASS_NAME")
 		self.InitSendMessage(xmlpath, "FUNCTION_SEND")
@@ -127,7 +124,6 @@ class FunctionFactory():
 		for list1 in listhint:
 			self.FuncMap[list1.get_function_name()] = MakeFunction(self.driver).make_function_hint(list1.get_element_location())
 
-	
 	def RunClick(self, funcname):
 		'''运行点击事件'''
 		element = self.FuncMap.get(funcname)
@@ -144,11 +140,12 @@ class FunctionFactory():
 		element(id_name, message)
 
 	def RunHint(self, funcname):
+		'''运行元素验证事件'''
 		element = self.FuncMap.get(funcname)
-		element()
+		return element()
 
 if __name__ == "__main__":
-	selenium_driver =Base.browser()
+	selenium_driver =browser()
 	FunctionFactory  = FunctionFactory(selenium_driver,'../Element.xml')
 	FunctionFactory.RunClick('Maximize_Window')
 	sleep(3)

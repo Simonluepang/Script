@@ -69,9 +69,12 @@ class Page(object):
 
 if __name__ == '__main__':
 
-	driver = webdriver.Chrome()
-	driver.get('https://www.baidu.com')
-	insert_img(driver, 'baidu.png')
-	driver.quit()
+	print(common_path(os.path.dirname(__file__), 'IMTestScript'))
+	# driver = browser()
+	# driver.quit()
+	# driver = webdriver.Chrome()
+	# driver.get('https://www.baidu.com')
+	# insert_img(driver, 'baidu.png')
+	# driver.quit()
 
-	print(common_path('aaa', 'IMTestScript'))
+	# print(common_path('aaa', 'IMTestScript'))
