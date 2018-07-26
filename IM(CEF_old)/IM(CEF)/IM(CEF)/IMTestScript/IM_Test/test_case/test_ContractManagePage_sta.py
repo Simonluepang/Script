@@ -4,12 +4,12 @@
 Title: 测试用例
 Description: 合同管理页面
 @author: Xushenwei
-@update: 2018年7月1日
+@update: 2018年7月11日
 '''
 from time import sleep
 import unittest, random, sys, autoit, threading, os
-sys.path.append('page_obj/models')
-from page_obj.models import myunit
+sys.path.append('page_obj/functions')
+from page_obj.functions import myunit
 from page_obj.ContractManagePage import *
 
 def addfile():
@@ -56,9 +56,9 @@ class NormalFlowTest(myunit.IMTest):
 		self.assertEqual(CM.ContractName_hint(), '7777')
 
 	def test2_editcontract_flow(self):
-		'''编辑合同'''
+		'''编辑合同正常流程'''
 		CM = ContractManage(self.driver)
-		clicklist = (CM.ProjectManage, CM.ContractManage, CM.switch_ContractType, 
+		clicklist = (CM.Maximize_Window, CM.ProjectManage, CM.ContractManage, CM.switch_ContractType, 
 		CM.ConstructionContract, CM.edit_Contract,)
 		for i in clicklist:
 			i()
@@ -88,9 +88,8 @@ if __name__ == '__main__':
 	# 构造测试集
 	suite = unittest.TestSuite()
 	suite.addTest(NormalFlowTest("test1_creatnormal_flow"))
-	
-	# suite.addTest(NormalFlowTest("test2_editcontract_flow"))
-	# suite.addTest(NormalFlowTest("test3_deletenormal_flow"))
+	suite.addTest(NormalFlowTest("test2_editcontract_flow"))
+	suite.addTest(NormalFlowTest("test3_deletenormal_flow"))
 	suite.addTest(CatalogTest(""))
 	suite.addTest(CatalogTest(""))
 	suite.addTest(CatalogTest(""))

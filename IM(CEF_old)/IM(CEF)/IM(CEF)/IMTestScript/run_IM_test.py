@@ -12,6 +12,7 @@ from email.mime.multipart import MIMEMultipart
 from email.header import Header
 from selenium import webdriver
 import smtplib, unittest, time, os, sys
+sys.path.append(r'IM_Test\test_case\page_obj\functions')
 
 
 def common_path(path, npos):
@@ -48,7 +49,7 @@ def send_mail(file_new):
 
 	# 上传测试报告附件
 	msgRoot = MIMEMultipart('related')
-	msgRoot['Subject'] = Header("Report",'utf-8')# 主题不能有test字样，否则会被认为是垃圾邮件
+	msgRoot['Subject'] = Header("Report",'utf-8')
 	msgRoot.attach(att)
 
 	msgRoot['from'] = 'xushenweitest@126.com'
@@ -66,18 +67,17 @@ def new_report(testreport):
 	lists = os.listdir(testreport)
 	lists.sort(key=lambda fn: os.path.getmtime(testreport + "\\" + fn))
 	file_new = os.path.join(testreport, lists[-1])
+	print(file_new)
 	return file_new
 
 
 if __name__ == '__main__':
 	
-	#为防止每次新开机第一次运行脚本时会出现打不开的情况，故先try一下browser，不管成功与否后面都可以正常运行
 	try:
 		dr = browser()
 		dr.quit()
 	except Exception as e:
 		print(e)
-		dr.quit()
 
 	discover = unittest.defaultTestLoader.discover('./IM_Test/test_case', pattern='test_*.py')
 	now = time.strftime("%Y-%m-%d %H_%M_%S")
@@ -89,4 +89,4 @@ if __name__ == '__main__':
 	
 	file_path = new_report('./IM_Test/report')
 
-	#send_mail(file_path)
+	send_mail(file_path)

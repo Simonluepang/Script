@@ -40,45 +40,45 @@ def ReadXMlData(xmlPath, parent):
 class MakeFunction(Base.Page):
 	'''创建元素操作方法'''
 	def make_function_click_by_xpath(self, element_location):
-		def fcbx():
+		def function_click_by_xpath():
 			self.find_element(By.XPATH, element_location).click()
-		return fcbx
+		return function_click_by_xpath
 
 	def make_function_click_by_class_name(self, element_location):
-		def fcbcn():
+		def function_click_by_class_name():
 			self.find_element(By.CLASS_NAME, element_location).click()
-		return fcbcn
+		return function_click_by_class_name
 
 	def make_function_send_keys(self,element_location):
-		def fsk(message):
+		def function_send_keys(message):
 			self.find_element(By.XPATH, element_location).send_keys(message)
-		return fsk
+		return function_send_keys
 
 	def make_function_time_widget1(self,element_location):
-		def ftw(id_name, message):
+		def function_time_widget(id_name, message):
 			js = "document.getElementById('" + id_name + "').removeAttribute('readonly');"
 			self.driver.execute_script(js)
 			self.find_element(By.XPATH, element_location).send_keys(message)
 			self.find_element(By.XPATH, element_location).click()
-		return ftw
+		return function_time_widget
 
 	def make_function_time_widget2(self,element_location):
-		def ftw(id_name, message):
+		def function_time_widget(id_name, message):
 			js = "document.getElementById('" + id_name + "').removeAttribute('readonly');"
 			self.driver.execute_script(js)
 			self.find_element(By.XPATH, element_location).send_keys(message)
-		return ftw
+		return function_time_widget
 
 	def make_function_hint(self, element_location):
-		def fh():
+		def function_hint():
 			return self.find_element(By.XPATH, element_location).text 
-		return fh
+		return function_hint
 
 class FunctionFactory():
 	'''功能工厂'''
 	def __init__(self, driver, xmlpath):
 
-		self.FuncMap = {}
+		self.FunctionMap = {}
 		self.driver =  driver
 
 		self.InitClickByXpath(xmlpath,"FUNCTION_CLICK_BY_XPATH")
@@ -92,61 +92,61 @@ class FunctionFactory():
 		#初始化点击事件，并保存在FuncMap中
 		listclickbyxpath = ReadXMlData(xmlpath, Parent)
 		for list1 in listclickbyxpath:
-			self.FuncMap[list1.get_function_name()] = MakeFunction(self.driver).make_function_click_by_xpath(list1.get_element_location())
+			self.FunctionMap[list1.get_function_name()] = MakeFunction(self.driver).make_function_click_by_xpath(list1.get_element_location())
 
 	def InitClickByClassName(self, xmlpath, Parent):
 		#初始化点击事件，并保存在FuncMap中
 		listclickbyclassname = ReadXMlData(xmlpath, Parent)
 		for list1 in listclickbyclassname:
-			self.FuncMap[list1.get_function_name()] = MakeFunction(self.driver).make_function_click_by_class_name(list1.get_element_location())
+			self.FunctionMap[list1.get_function_name()] = MakeFunction(self.driver).make_function_click_by_class_name(list1.get_element_location())
 
 	def InitSendMessage(self, xmlpath, Parent):
 		#初始化信息输入事件，并保存在FuncMap中
 		listsSend = ReadXMlData(xmlpath, Parent)
 		for list1 in listsSend:
-			self.FuncMap[list1.get_function_name()] = MakeFunction(self.driver).make_function_send_keys(list1.get_element_location())
+			self.FunctionMap[list1.get_function_name()] = MakeFunction(self.driver).make_function_send_keys(list1.get_element_location())
 
 	def InitTimeWidget1(self, xmlpath, Parent):
 		#初始化时间控件事件，并保存在FuncMap中
 		listTimeWidget1 = ReadXMlData(xmlpath, Parent)
 		for list1 in listTimeWidget1:
-			self.FuncMap[list1.get_function_name()] = MakeFunction(self.driver).make_function_time_widget1(list1.get_element_location())
+			self.FunctionMap[list1.get_function_name()] = MakeFunction(self.driver).make_function_time_widget1(list1.get_element_location())
 
 	def InitTimeWidget2(self, xmlpath, Parent):
 		#初始化时间控件事件，并保存在FuncMap中
 		listTimeWidget2 = ReadXMlData(xmlpath, Parent)
 		for list1 in listTimeWidget2:
-			self.FuncMap[list1.get_function_name()] = MakeFunction(self.driver).make_function_time_widget2(list1.get_element_location())
+			self.FunctionMap[list1.get_function_name()] = MakeFunction(self.driver).make_function_time_widget2(list1.get_element_location())
 
 	def InitHint(self, xmlpath, Parent):
 		#初始化元素验证事件，并保存在FuncMap中
 		listhint = ReadXMlData(xmlpath, Parent)
 		for list1 in listhint:
-			self.FuncMap[list1.get_function_name()] = MakeFunction(self.driver).make_function_hint(list1.get_element_location())
+			self.FunctionMap[list1.get_function_name()] = MakeFunction(self.driver).make_function_hint(list1.get_element_location())
 
 	def RunClick(self, funcname):
 		'''运行点击事件'''
-		element = self.FuncMap.get(funcname)
+		element = self.FunctionMap.get(funcname)
 		element()
 
 	def RunSendKeys(self, funcname, message):
 		'''运行信息输入事件'''
-		element = self.FuncMap.get(funcname)
+		element = self.FunctionMap.get(funcname)
 		element(message)
 
 	def RunTimeWidget(self, funcname, id_name, message):
 		'''运行时间控件事件'''
-		element = self.FuncMap.get(funcname)
+		element = self.FunctionMap.get(funcname)
 		element(id_name, message)
 
 	def RunHint(self, funcname):
 		'''运行元素验证事件'''
-		element = self.FuncMap.get(funcname)
+		element = self.FunctionMap.get(funcname)
 		return element()
 
 if __name__ == "__main__":
-	selenium_driver =browser()
-	FunctionFactory  = FunctionFactory(selenium_driver,'../Element.xml')
+	driver =browser()
+	FunctionFactory  = FunctionFactory(driver,'../Element.xml')
 	FunctionFactory.RunClick('Maximize_Window')
 	sleep(3)
-	selenium_driver.quit()
+	driver.quit()

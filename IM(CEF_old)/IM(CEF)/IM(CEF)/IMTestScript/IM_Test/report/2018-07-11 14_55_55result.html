@@ -189,9 +189,9 @@ function showOutput(id, name) {
 
 <div class='heading'>
 <h1>Center自动化测试报告</h1>
-<p class='attribute'><strong>Start Time:</strong> 2018-07-24 16:45:06</p>
-<p class='attribute'><strong>Duration:</strong> 0:00:16.814000</p>
-<p class='attribute'><strong>Status:</strong> Error 2</p>
+<p class='attribute'><strong>Start Time:</strong> 2018-07-11 14:55:55</p>
+<p class='attribute'><strong>Duration:</strong> 0:01:12.295135</p>
+<p class='attribute'><strong>Status:</strong> Pass 3</p>
 
 <p class='description'>环境：Windows7-64x 浏览器：Chrome</p>
 </div>
@@ -221,97 +221,36 @@ function showOutput(id, name) {
     <td>View</td>
 </tr>
 
-<tr class='errorClass'>
-    <td>test_ContractManagePage_XML_sta.NormalFlowTest: 正常流程相关测试</td>
-    <td>2</td>
+<tr class='passClass'>
+    <td>test_ContractManagePage_sta.NormalFlowTest: 正常流程相关测试</td>
+    <td>3</td>
+    <td>3</td>
     <td>0</td>
     <td>0</td>
-    <td>2</td>
-    <td><a href="javascript:showClassDetail('c1',2)">Detail</a></td>
+    <td><a href="javascript:showClassDetail('c1',3)">Detail</a></td>
 </tr>
 
-<tr id='ft1.1' class='none'>
-    <td class='errorCase'><div class='testcase'>test1_creatnormal_flow: 添加合同正常流程</div></td>
-    <td colspan='5' align='center'>
-
-    <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
-        error</a>
-
-    <div id='div_ft1.1' class="popup_window">
-        <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
-           [x]</a>
-        </div>
-        <pre>
-        
-ft1.1: Traceback (most recent call last):
-  File "F:\IMUIScript\IMTestScript\IM_Test\test_case\test_ContractManagePage_XML_sta.py", line 38, in test1_creatnormal_flow
-    FF  = PageFunction_XML.FunctionFactory(self.driver,'page_obj/Element.xml')
-  File "F:\IMUIScript\IMTestScript\IM_Test\test_case\page_obj\models\PageFunction_XML.py", line 84, in __init__
-    self.InitClickByXpath(xmlpath,"FUNCTION_CLICK_BY_XPATH")
-  File "F:\IMUIScript\IMTestScript\IM_Test\test_case\page_obj\models\PageFunction_XML.py", line 93, in InitClickByXpath
-    listclickbyxpath = ReadXMlData(xmlpath, Parent)
-  File "F:\IMUIScript\IMTestScript\IM_Test\test_case\page_obj\models\PageFunction_XML.py", line 31, in ReadXMlData
-    dom = xmlParser.parse(xmlPath)
-  File "C:\Python\Python36-32\lib\xml\dom\minidom.py", line 1958, in parse
-    return expatbuilder.parse(file)
-  File "C:\Python\Python36-32\lib\xml\dom\expatbuilder.py", line 910, in parse
-    with open(file, 'rb') as fp:
-FileNotFoundError: [Errno 2] No such file or directory: 'page_obj/Element.xml'
-
-
-        </pre>
-    </div>
-    <!--css div popup end-->
-
-    </td>
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test1_creatnormal_flow: 添加合同正常流程</div></td>
+    <td colspan='5' align='center'>pass</td>
 </tr>
 
-<tr id='ft1.2' class='none'>
-    <td class='errorCase'><div class='testcase'>test2_deletenormal_flow: 删除合同正常流程</div></td>
-    <td colspan='5' align='center'>
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test2_editcontract_flow: 编辑合同正常流程</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
 
-    <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.2')" >
-        error</a>
-
-    <div id='div_ft1.2' class="popup_window">
-        <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.2').style.display = 'none' " >
-           [x]</a>
-        </div>
-        <pre>
-        
-ft1.2: Traceback (most recent call last):
-  File "F:\IMUIScript\IMTestScript\IM_Test\test_case\test_ContractManagePage_XML_sta.py", line 64, in test2_deletenormal_flow
-    FF = PageFunction_XML.FunctionFactory(self.driver, 'page_obj/Element.xml')
-  File "F:\IMUIScript\IMTestScript\IM_Test\test_case\page_obj\models\PageFunction_XML.py", line 84, in __init__
-    self.InitClickByXpath(xmlpath,"FUNCTION_CLICK_BY_XPATH")
-  File "F:\IMUIScript\IMTestScript\IM_Test\test_case\page_obj\models\PageFunction_XML.py", line 93, in InitClickByXpath
-    listclickbyxpath = ReadXMlData(xmlpath, Parent)
-  File "F:\IMUIScript\IMTestScript\IM_Test\test_case\page_obj\models\PageFunction_XML.py", line 31, in ReadXMlData
-    dom = xmlParser.parse(xmlPath)
-  File "C:\Python\Python36-32\lib\xml\dom\minidom.py", line 1958, in parse
-    return expatbuilder.parse(file)
-  File "C:\Python\Python36-32\lib\xml\dom\expatbuilder.py", line 910, in parse
-    with open(file, 'rb') as fp:
-FileNotFoundError: [Errno 2] No such file or directory: 'page_obj/Element.xml'
-
-
-        </pre>
-    </div>
-    <!--css div popup end-->
-
-    </td>
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test3_deletenormal_flow: 删除合同正常流程</div></td>
+    <td colspan='5' align='center'>pass</td>
 </tr>
 
 <tr id='total_row'>
     <td>Total</td>
-    <td>2</td>
+    <td>3</td>
+    <td>3</td>
     <td>0</td>
     <td>0</td>
-    <td>2</td>
     <td>&nbsp;</td>
 </tr>
 </table>

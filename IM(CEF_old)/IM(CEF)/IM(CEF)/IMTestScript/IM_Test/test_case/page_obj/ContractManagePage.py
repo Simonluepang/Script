@@ -4,20 +4,13 @@
 Title: 页面元素:动作+验证
 Description: 合同管理页面
 @author: Xushenwei
-@update: 2018年6月11日
+@update: 2018年7月11日
 '''
-import threading
 from selenium.webdriver.common.by import By 
 from selenium import webdriver
 from time import sleep
-
 import driver as driver
 import Base as Base
-'''
-#单独运行本文件的时候使用以下路径
-import models.driver as driver
-import models.Base as Base
-''' 
 
 class ContractManage(Base.Page):
 	'''合同管理页面元素'''
@@ -100,8 +93,6 @@ class ContractManage(Base.Page):
 		self.find_element(*self.RightChange_loc).click()
 
 	upload_Accessory_loc = (By.XPATH, '//*[@id="modal-body"]/div[1]/div/div[2]/element/input')
-	# 此函数在前端中应该是个阻塞函数，故使用selenium点击的时候会出现程序不往下进行的问题。
-	# 使用autoit暴力点击不会出现该问题。
 	def upload_Accessory(self):
 		'''上传附件'''
 		self.find_element(*self.upload_Accessory_loc).click()
@@ -288,11 +279,10 @@ class ContractManage(Base.Page):
 		'''验证合同名称'''
 		return self.find_element(*self.ContractName_hint_loc).text
 
+# if __name__ == '__main__':
 
-if __name__ == '__main__':
-
-	selenium_driver =driver.browser()
-	CM = ContractManage(selenium_driver)
-	CM.create_ConstructModal()
-	sleep(3)
-	CM.quit()
+# 	selenium_driver =driver.browser()
+# 	CM = ContractManage(selenium_driver)
+# 	CM.create_ConstructModal()
+# 	sleep(3)
+# 	CM.quit()

@@ -32,6 +32,7 @@ def browser():
 	driver = webdriver.Chrome (chrome_options=options)
 	handles = driver.window_handles
 	driver.switch_to.window(handles[-1])
+	os.popen('TASKKILL/F /IM ZY.Downloader.exe')
 	return driver
 
 class Page(object):
@@ -69,7 +70,7 @@ class Page(object):
 
 if __name__ == '__main__':
 
-	print(common_path(os.path.dirname(__file__), 'IMTestScript'))
+	# print(common_path(os.path.dirname(__file__), 'IMTestScript'))
 	# driver = browser()
 	# driver.quit()
 	# driver = webdriver.Chrome()

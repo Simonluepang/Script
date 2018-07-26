@@ -189,9 +189,9 @@ function showOutput(id, name) {
 
 <div class='heading'>
 <h1>Center自动化测试报告</h1>
-<p class='attribute'><strong>Start Time:</strong> 2018-07-24 11:17:24</p>
-<p class='attribute'><strong>Duration:</strong> 0:00:06.101400</p>
-<p class='attribute'><strong>Status:</strong> Error 1</p>
+<p class='attribute'><strong>Start Time:</strong> 2018-07-11 16:49:24</p>
+<p class='attribute'><strong>Duration:</strong> 0:01:07.459763</p>
+<p class='attribute'><strong>Status:</strong> Pass 3</p>
 
 <p class='description'>环境：Windows7-64x 浏览器：Chrome</p>
 </div>
@@ -221,63 +221,36 @@ function showOutput(id, name) {
     <td>View</td>
 </tr>
 
-<tr class='errorClass'>
-    <td>test_ContractManagePage_XML_sta.NormalFlowTest: 正常流程相关测试</td>
-    <td>1</td>
+<tr class='passClass'>
+    <td>test_ContractManagePage_sta.NormalFlowTest: 正常流程相关测试</td>
+    <td>3</td>
+    <td>3</td>
     <td>0</td>
     <td>0</td>
-    <td>1</td>
-    <td><a href="javascript:showClassDetail('c1',1)">Detail</a></td>
+    <td><a href="javascript:showClassDetail('c1',3)">Detail</a></td>
 </tr>
 
-<tr id='ft1.1' class='none'>
-    <td class='errorCase'><div class='testcase'>test1_creatnormal_flow: 添加合同正常流程</div></td>
-    <td colspan='5' align='center'>
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test1_creatnormal_flow: 添加合同正常流程</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
 
-    <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
-        error</a>
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test2_editcontract_flow: 编辑合同正常流程</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
 
-    <div id='div_ft1.1' class="popup_window">
-        <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
-           [x]</a>
-        </div>
-        <pre>
-        
-ft1.1: Traceback (most recent call last):
-  File "F:\IMUIScript\IMTestScript\IM_Test\test_case\page_obj\models\myunit.py", line 17, in setUp
-    self.driver = browser()
-  File "IM_Test\test_case\page_obj\models\Base.py", line 32, in browser
-    driver = webdriver.Chrome (chrome_options=options)
-  File "C:\Python\Python36-32\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 75, in __init__
-    desired_capabilities=desired_capabilities)
-  File "C:\Python\Python36-32\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 156, in __init__
-    self.start_session(capabilities, browser_profile)
-  File "C:\Python\Python36-32\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 245, in start_session
-    response = self.execute(Command.NEW_SESSION, parameters)
-  File "C:\Python\Python36-32\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 314, in execute
-    self.error_handler.check_response(response)
-  File "C:\Python\Python36-32\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
-    raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.WebDriverException: Message: unknown error: no chrome binary at IM_Test\test_case\page_obj\modelIMTestScript\Client\x64_vc11_unicode_release\BimIM.exe
-  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 6.1.7601 SP1 x86_64)
-
-
-
-        </pre>
-    </div>
-    <!--css div popup end-->
-
-    </td>
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test3_deletenormal_flow: 删除合同正常流程</div></td>
+    <td colspan='5' align='center'>pass</td>
 </tr>
 
 <tr id='total_row'>
     <td>Total</td>
-    <td>1</td>
+    <td>3</td>
+    <td>3</td>
     <td>0</td>
     <td>0</td>
-    <td>1</td>
     <td>&nbsp;</td>
 </tr>
 </table>

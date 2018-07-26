@@ -56,7 +56,7 @@ class NormalFlowTest(myunit.IMTest):
 			sleep(0.5)
 
 		FF.RunClick('save_Contract')
-		sleep(7)
+		sleep(5)
 		self.assertEqual(FF.RunHint('ContractName_hint'), '7777')
 
 	def test2_deletenormal_flow(self):
@@ -77,12 +77,11 @@ if __name__ == '__main__':
 	# 构造测试集
 	suite = unittest.TestSuite()
 	suite.addTest(NormalFlowTest("test1_creatnormal_flow"))
-	
-	# suite.addTest(NormalFlowTest("test2_editcontract_flow"))
-	# suite.addTest(NormalFlowTest("test3_deletenormal_flow"))
-	suite.addTest(CatalogTest(""))
-	suite.addTest(CatalogTest(""))
-	suite.addTest(CatalogTest(""))
+	suite.addTest(NormalFlowTest("test2_deletenormal_flow"))
+	suite.addTest(NormalFlowTest(""))
+	suite.addTest(NormalFlowTest(""))
+	suite.addTest(NormalFlowTest(""))
+	suite.addTest(NormalFlowTest(""))
 	
 	# 执行测试
 	runner = unittest.TextTestRunner()
