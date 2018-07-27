@@ -8,9 +8,9 @@ Description: 合同管理页面
 '''
 from time import sleep
 import unittest, random, sys, autoit, threading, os
-from	 page_obj.models import Base
-from page_obj.models import myunit
-from page_obj.models import PageFunction_XML
+from	 page_obj.functions import Base
+from page_obj.functions import myunit
+from page_obj.functions import PageFunction_XML
 
 def addfile():
 	'''上传附件流程'''
