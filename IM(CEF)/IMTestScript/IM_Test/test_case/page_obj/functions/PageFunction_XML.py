@@ -17,6 +17,7 @@ from	 page_obj.models import Base
 class ElementClass:
 	'''获取配置文件中的信息'''
 	def __init__(self, function_name, element_location):
+		
 		self.function_name = function_name
 		self.element_location = element_location
 
