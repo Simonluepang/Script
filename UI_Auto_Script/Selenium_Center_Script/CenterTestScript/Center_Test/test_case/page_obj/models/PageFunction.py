@@ -75,6 +75,13 @@ class FunctionFactory(Page):
 		function = self.make_function_hint_by_css(element_location)
 		return function
 
+class Function(FunctionFactory):
+
+	def makefunction(self, method, elementname):
+		if method == click:
+
+
+
 
 
 if __name__ == "__main__":

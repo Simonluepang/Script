@@ -5,7 +5,8 @@
 # @author: Xushenwei
 # @update: 2018年7月1日
 # @editor:
-from Selenium_Center_Script.CenterTestScript.Center_Test.test_case.page_obj.models.PageFunction import FunctionFactory
+from Script.UI_Auto_Script.Selenium_Center_Script.CenterTestScript.Center_Test.test_case.page_obj.models.PageFunction import \
+    FunctionFactory
 
 
 class PageConfiguration():
