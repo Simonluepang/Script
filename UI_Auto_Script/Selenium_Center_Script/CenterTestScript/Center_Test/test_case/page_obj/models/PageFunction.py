@@ -52,36 +52,28 @@ class FunctionFactory(Page):
 
 	def ReadJsonData(self):
 		"""从Json文件中读取元素内容"""
-		jsonpath = self.basedir + '/test_case/page_obj/Element/' + self.jsonfilename +'.json'
+		jsonpath = self.basedir + '/test_case/page_obj/' + self.jsonfilename +'.json'
 		file = open(jsonpath, 'rb')
 		fileJsondata = json.loads(file.read())
 		return fileJsondata
 
-	def RunClick(self, element_name):
+	def Click(self, element_name):
 		"""使用元素名称来操控元素点击动作"""
 		element_location = self.ReadJsonData()[element_name]
 		function = self.make_function_click_by_css(element_location)
 		function()
 
-	def RunSendKeys(self, element_name, value):
+	def SendKeys(self, element_name, value):
 		"""使用元素名称来操控输入动作"""
 		element_location = self.ReadJsonData()[element_name]
 		function = self.make_function_sendkeys_by_css(element_location)
 		function(value)
 
-	def RunHint(self, element_name):
+	def Hint(self, element_name):
 		"""使用元素名称来操控元素点击动作"""
 		element_location = self.ReadJsonData()[element_name]
 		function = self.make_function_hint_by_css(element_location)
 		return function
-
-class Function(FunctionFactory):
-
-	def makefunction(self, method, elementname):
-		if method == click:
-
-
-
 
 
 if __name__ == "__main__":

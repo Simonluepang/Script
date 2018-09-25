@@ -1,6 +1,0 @@
-{
-	"login_username" : "div#username.paddingPlaceholder.el-input>input.el-input__inner",
-	"login_password" : "div#password.paddingPlaceholder.pass-word.el-input>input.el-input__inner",
-	"submit_login" : "button.el-button.enterprise-login.el-button--primary",
-	"login_success_hint" : "div.logo-title.substr"
-}
