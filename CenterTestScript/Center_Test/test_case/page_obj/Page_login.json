@@ -1,0 +1,6 @@
+{
+	"login_username" : "//*[@id='username']/input",
+	"login_password" : "//*[@id='password']/input",
+	"submit_login" : "//*[@id='app']/div/div/div[2]/div[2]/div[2]/form/div[4]/button",
+	"login_success_hint" : "//*[@id='app']/div/div[1]/div[1]/div[1]/div/div/div[2]"
+}
