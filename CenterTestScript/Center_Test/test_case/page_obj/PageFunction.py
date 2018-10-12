@@ -9,11 +9,9 @@ Description: 继承Base，对页面元素进行二次封装，
 @update: 2018年9月18日
 @editor:
 '''
-import json
+import json, sys
 from selenium.webdriver.common.by import By
-# from Selenium_Center_Script.CenterTestScript.Center_Test.test_case.page_obj.models.Base import Page
-from page_obj.models.Base import Page
-
+from page_obj.Public.Base import Page
 
 class FunctionFactory(Page):
     '''元素方法工厂'''
@@ -60,7 +58,8 @@ class FunctionFactory(Page):
 
     def ReadJsonData(self):
         """从Json文件中读取元素内容"""
-        jsonpath = self.basedir + '/test_case/page_obj/' + self.jsonfilename + '.json'
+        # jsonpath = self.basedir + '/test_case/page_obj/' + self.jsonfilename + '.json'
+        jsonpath = self.basedir + '/page_obj/' + self.jsonfilename + '.json'
         file = open(jsonpath, 'rb')
         fileJsondata = json.loads(file.read())
         file.close()

@@ -10,7 +10,7 @@ Description: 初始化测试框架
 import unittest
 from time import sleep
 from selenium import webdriver
-from Selenium_Center_Script.CenterTestScript.Center_Test.test_case.page_obj.models.PageFunction import FunctionFactory
+from page_obj.models.PageFunction import FunctionFactory
 
 
 class CenterTest(unittest.TestCase):

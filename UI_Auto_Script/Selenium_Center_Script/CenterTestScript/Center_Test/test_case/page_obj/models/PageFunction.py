@@ -11,7 +11,7 @@ Description: 继承Base，对页面元素进行二次封装，
 '''
 import json
 from selenium.webdriver.common.by import By
-from Selenium_Center_Script.CenterTestScript.Center_Test.test_case.page_obj.models.Base import Page
+from page_obj.models.Base import Page
 
 
 class FunctionFactory(Page):
@@ -55,6 +55,7 @@ class FunctionFactory(Page):
 		jsonpath = self.basedir + '/test_case/page_obj/' + self.jsonfilename +'.json'
 		file = open(jsonpath, 'rb')
 		fileJsondata = json.loads(file.read())
+		file.close()
 		return fileJsondata
 
 	def Click(self, element_name):

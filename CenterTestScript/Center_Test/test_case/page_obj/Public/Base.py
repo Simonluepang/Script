@@ -83,7 +83,7 @@ class Page(object):
 	def Base_dir(self):
 		"""寻找指定文件夹的系统路径"""
 		base_dir = str(os.path.dirname(os.path.dirname(__file__))).replace('\\', '/')
-		base = base_dir.split('/test_case')[0]
+		base = base_dir.split('/page_obj')[0]
 		return base
 			
 

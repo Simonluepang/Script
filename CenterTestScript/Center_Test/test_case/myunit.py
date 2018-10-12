@@ -7,11 +7,10 @@ Description: 初始化测试框架
 @update: 2018年6月11日
 @editor:
 '''
-import unittest
+import unittest, sys
 from time import sleep
 from selenium import webdriver
-# from Selenium_Center_Script.CenterTestScript.Center_Test.test_case.page_obj.models.PageFunction import FunctionFactory
-from page_obj.models.PageFunction import FunctionFactory
+from page_obj.PageFunction import FunctionFactory
 
 class CenterTest(unittest.TestCase):
     """初始化测试框架"""
