@@ -1,13 +1,13 @@
 #coding=utf-8
 
-def reso_base(response):
+def resp_base(response):
 	#提取接口返回的状态码以及headers
 	result = {}
 	result["status_code"] = response.status_code
 	result["headers"] = response.headers
 	return result
 
-def recombition_list(keys, data_list):
+def Recombition_list(keys, data_list):
 	# 将list根据key重组
 	'''
     :param keys:["epid","orgId"]
@@ -34,8 +34,8 @@ def recombition_list(keys, data_list):
 
 	return result
 
-def recombition_dict(keys, data_list):
-	# 将key放入dict中
+def Recombition(keys, data_list):
+	# 将list中的项作为key，该项的位置作为value保存在dict中
 	'''
     :param keys:['first','last','number']
     :param data_List:{
@@ -52,3 +52,73 @@ def recombition_dict(keys, data_list):
 		result[key] = data_list.get(key)
 
 	return result
+
+class Public_Response(object):
+	def msg_data_code(self,data):
+		try:
+			result = resp_base(data)
+			context = data.json()
+			result['code'] = context.get('code')
+			result['msg'] = context.get('msg')
+			result['data'] = context.get('data')
+			return result
+		except BaseException as e:
+			return str(e)
+
+class Response_url_controler(Public_Response):
+	def resp_provinceAndCity(self, data):
+		try:
+			result = self.msg_data_code(data)
+
+			#拆解data下的city
+			cities = result['data'].get('cities')
+			cities_keys = ['city', 'cityId', 'provinceId']
+			result['data_cities_list'] = Recombition_list(cities_keys, cities)
+
+			#拆解data下的province
+
+			#拆解data下的countries
+
+			return result
+		except BaseException as e:
+			return str(e)
+
+
+class Response_project_dashboard(Public_Response):
+	def resp_showListProjectDashboard(self,data):
+		try:
+			result = self.msg_data_code(data)
+
+			#拆解data
+			keys = ['epid', 'footprint', 'logoUrl', 'orgId', 'orgName', 'projects', 'space', 'subAdmin', 'superAdmin', 'title']
+			result['data_list'] = Recombition_list(keys, result['data'])
+			return result
+		except BaseException as e:
+			return str(e)
+
+
+class Response_user_controller(Public_Response):
+	def resp_user_list_prjects(self,data):
+		try:
+			result = self.msg_data_code(data)
+
+			#拆解data
+			data_keys = ['area','cityId','cityName','contractType','countyId','countyName','endDate','endDateStr','epid','id','location','logo','logoUrl=','managerName','mileage','mobile','name','parentId',
+                     'provinceId','provinceName','remarks','sortStatus','startDate','startDateStr','status']
+			result['data_list'] = Recombition_list(data_keys, result['data'])
+			return result
+		except BaseException as e:
+			return str(e)
+
+
+class Response_feedback_controller(Public_Response):
+	def resp_feedback_type(self,data):
+		try:
+			result = self.msg_data_code(data)
+
+			#拆解data
+			data_keys = ['typeId', 'typeName']
+			result['data_list'] = Recombition_list(data_keys, result['data'])
+			return result
+		except BaseException as e:
+			return str(e)
