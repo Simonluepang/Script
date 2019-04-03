@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="0" name="pytest" skips="0" tests="1" time="30.041"><testcase classname="TestCase.test_Configuration_Page.TestConfiguration" file="TestCase\test_Configuration_Page.py" line="16" name="test_DataCatalog" time="29.8989999294281"><system-out>成功登陆！
+</system-out></testcase></testsuite>
